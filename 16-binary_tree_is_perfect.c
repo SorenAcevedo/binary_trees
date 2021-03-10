@@ -72,14 +72,16 @@ int btf(const binary_tree_t *tree)
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int a, b;
+	int a, b, c, d;
 
 	if (tree)
 	{
 		a = btf(tree);
 		b = btb(tree);
+		c = btb(tree->left);
+		d = btb(tree->right);
 
-		if (a == 1 && b == 0)
+		if (a == 1 && b == 0 && c == 0 && d == 0)
 			return (1);
 	}
 	return (0);

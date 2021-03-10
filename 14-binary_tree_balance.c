@@ -9,10 +9,10 @@
 
 int max(int a, int b)
 {
-        if (a > b)
-                return (a);
-        else
-                return (b);
+	if (a > b)
+		return (a);
+	else
+		return (b);
 }
 
 /**
@@ -23,9 +23,9 @@ int max(int a, int b)
 
 int recurtion(const binary_tree_t *tree)
 {       
-        if (!tree)
-                return(0);
-        return max(recurtion(tree->left), recurtion(tree->right)) + 1;
+	if (!tree)
+		return(0);
+	return max(recurtion(tree->left), recurtion(tree->right)) + 1;
 }
 
 /**
@@ -36,9 +36,28 @@ int recurtion(const binary_tree_t *tree)
 
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-        if (tree)
-        {
-                return (recurtion(tree) - 1);
-        }
-        return (0);
+	if (tree)
+	{
+		return (recurtion(tree));
+	}
+	return (0);
+}
+
+/**
+ * binary_tree_balance - measures the balance factor of a binary tree.
+ * @tree: pointer to the root node of the tree to measure the balance factor.
+ * Return: balance of node.
+ */
+
+int binary_tree_balance(const binary_tree_t *tree)
+{
+	int a, b;
+
+	if (tree)
+	{
+		a = binary_tree_height(tree->left);
+		b = binary_tree_height(tree->right);
+		return (a - b);
+	}
+	return (0);
 }
